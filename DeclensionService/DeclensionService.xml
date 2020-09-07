@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DeclensionService</name>
+    </assembly>
+    <members>
+        <member name="M:DeclensionService.Controllers.DeclensionController.DeclinePhrase(System.String)">
+            <summary>
+            Склонение словосочетания
+            </summary>
+            <param name="phrase"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DeclensionService.Controllers.DeclensionController.DeclineName(System.String)">
+            <summary>
+            Склонение ФИО
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
