@@ -1,5 +1,7 @@
-﻿using Cyriller;
+﻿using DeclensionService.Declension;
+using DeclensionService.Models;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace DeclensionService.Controllers
 {
@@ -7,33 +9,35 @@ namespace DeclensionService.Controllers
     [ApiController]
     public class DeclensionController : ControllerBase
     {
-        private readonly IDeclension _declination;
+        private readonly IDeclensionFacade _declension;
 
-        public DeclensionController(IDeclension declination)
+        public DeclensionController(IDeclensionFacade declension)
         {
-            _declination = declination;
+            _declension = declension;
         }
 
         /// <summary>
         /// Склонение словосочетания
         /// </summary>
-        /// <param name="phrase"></param>
+        /// <param name="phrase">Словосочетание или одно существительное\прилагательное</param>
+        /// <param name="caseEnum">Падеж</param>
         /// <returns></returns>
         [HttpGet]
-        public CyrResult DeclinePhrase(string phrase)
+        public DeclinationResult DeclinePhrase(string phrase, CaseEnum caseEnum)
         {
-            return _declination.DeclinePhrase(phrase);
+            return _declension.DeclinePhrase(phrase, caseEnum);
         }
 
         /// <summary>
         /// Склонение ФИО
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="name">ФИО</param>
+        /// <param name="caseEnum">Падеж</param>
         /// <returns></returns>
         [HttpGet]
-        public CyrResult DeclineName(string name)
+        public DeclinationResult DeclineName(string name, CaseEnum caseEnum)
         {
-            return _declination.DeclineName(name);
+            return _declension.DeclineName(name , caseEnum);
         }
 
     }
