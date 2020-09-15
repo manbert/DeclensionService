@@ -4,56 +4,69 @@
         <name>DeclensionService</name>
     </assembly>
     <members>
-        <member name="M:DeclensionService.Controllers.DeclensionController.DeclinePhrase(System.String,DeclensionService.Models.CaseEnum)">
+        <member name="M:DeclensionService.Controllers.DeclensionController.DeclensionOfPhrase(DeclensionService.Models.OriginalData)">
             <summary>
-            Склонение словосочетания
+            Склонение словосочетания (перевод в нижний регистр переводится автоматически)
             </summary>
-            <param name="phrase">Словосочетание или одно существительное\прилагательное</param>
-            <param name="caseEnum">Падеж</param>
+            <param name="originalData">Словосочетание и падеж</param>        
             <returns></returns>
         </member>
-        <member name="M:DeclensionService.Controllers.DeclensionController.DeclineName(System.String,DeclensionService.Models.CaseEnum)">
+        <member name="M:DeclensionService.Controllers.DeclensionController.DeclensionOfName(DeclensionService.Models.OriginalData)">
             <summary>
             Склонение ФИО
             </summary>
-            <param name="name">ФИО</param>
-            <param name="caseEnum">Падеж</param>
+            <param name="originalData">ФИО и падеж</param>        
             <returns></returns>
         </member>
         <member name="T:DeclensionService.Models.CaseEnum">
             <summary>
             Падежи
-            * 0 - именительный
-            * 1 - родительный
-            * 2 - дательный
-            * 3 - винительный
-            * 4 - творительный
-            * 5 - предложный
+            * 1 - именительный
+            * 2 - родительный
+            * 3 - дательный
+            * 4 - винительный
+            * 5 - творительный
+            * 6 - предложный
             </summary>
         </member>
-        <member name="T:DeclensionService.Models.DeclinationResult">
+        <member name="T:DeclensionService.Models.DeclensionResult">
             <summary>
             Возвращаемый тип
             </summary>
         </member>
-        <member name="P:DeclensionService.Models.DeclinationResult.Nominative">
-            <summary>
-            Входное выражение
-            </summary>
-        </member>
-        <member name="P:DeclensionService.Models.DeclinationResult.Output">
+        <member name="P:DeclensionService.Models.DeclensionResult.Output">
             <summary>
             Выражение в указанном падеже
             </summary>
         </member>
-        <member name="P:DeclensionService.Models.DeclinationResult.CaseEnum">
-            <summary>
-            Указанный падеж
-            </summary>
-        </member>
-        <member name="P:DeclensionService.Models.DeclinationResult.Success">
+        <member name="P:DeclensionService.Models.DeclensionResult.Success">
             <summary>
             Успешность склонения
+            </summary>
+        </member>
+        <member name="P:DeclensionService.Models.DeclensionResult.OriginalData">
+            <summary>
+            Входные данные
+            </summary>
+        </member>
+        <member name="P:DeclensionService.Models.DeclensionResult.ErrorMessage">
+            <summary>
+            Ошибка при склонении
+            </summary>
+        </member>
+        <member name="T:DeclensionService.Models.OriginalData">
+            <summary>
+            Исходные данные
+            </summary>
+        </member>
+        <member name="P:DeclensionService.Models.OriginalData.Input">
+            <summary>
+            Исходная строка
+            </summary>
+        </member>
+        <member name="P:DeclensionService.Models.OriginalData.CaseEnum">
+            <summary>
+            Падеж
             </summary>
         </member>
     </members>

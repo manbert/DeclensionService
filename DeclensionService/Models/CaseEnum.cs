@@ -1,26 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DeclensionService.Models
+﻿namespace DeclensionService.Models
 {
     /// <summary>
     /// Падежи
-    /// * 0 - именительный
-    /// * 1 - родительный
-    /// * 2 - дательный
-    /// * 3 - винительный
-    /// * 4 - творительный
-    /// * 5 - предложный
+    /// * 1 - именительный
+    /// * 2 - родительный
+    /// * 3 - дательный
+    /// * 4 - винительный
+    /// * 5 - творительный
+    /// * 6 - предложный
     /// </summary>
     public enum CaseEnum
-    {        
-        Nominative = 0,
-        Genitive = 1,
-        Dative = 2,
-        Accusative = 3,
-        Instrumental = 4,
-        Prepositional = 5
+    {
+        Nominative = 1,
+        Genitive = 2,
+        Dative = 3,
+        Accusative = 4,
+        Instrumental = 5,
+        Prepositional = 6
     }
 }

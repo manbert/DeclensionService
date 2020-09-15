@@ -18,33 +18,39 @@ namespace DeclensionService.Declension
             cyrAdjectiveCollection = new CyrAdjectiveCollection();
             cyrPhrase = new CyrPhrase(cyrNounCollection, cyrAdjectiveCollection);
             cyrName = new CyrName();
-        }
+        }        
         
-        public DeclinationResult DeclinePhrase(string phrase, CaseEnum casesEnum)
+        public DeclensionResult DeclensionOfPhrase(OriginalData originalData)
         {
+            var preparationData = PrepareData(originalData.Input);
             try
             {
-                var result = cyrPhrase.Decline(phrase, GetConditionsEnum.Strict);
-                return new DeclinationResult(result, casesEnum);
-            }
-            catch(Exception ex)
-            {
-                return new DeclinationResult();
-            }            
-        }
-
-        public DeclinationResult DeclineName(string name, CaseEnum casesEnum)
-        {
-            try
-            {
-                var result = cyrName.Decline(name);
-                return new DeclinationResult(result, casesEnum);
+                var result = cyrPhrase.Decline(preparationData, GetConditionsEnum.Strict);
+                return new DeclensionResult(result, originalData);
             }
             catch (Exception ex)
             {
-                return new DeclinationResult();
-            }      
-        
+                return new DeclensionResult(ex.Message, originalData);
+            }
         }
+
+        public DeclensionResult DeclensionOfName(OriginalData originalData)
+        {
+            try
+            {
+                var result = cyrName.Decline(originalData.Input);
+                return new DeclensionResult(result, originalData);
+            }
+            catch (Exception ex)
+            {
+                return new DeclensionResult(ex.Message, originalData);
+            }
+        }
+
+        private string PrepareData(string phrase)
+        {
+            return phrase.ToLower();
+        }
+
     }
 }

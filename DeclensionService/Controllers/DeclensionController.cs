@@ -17,27 +17,25 @@ namespace DeclensionService.Controllers
         }
 
         /// <summary>
-        /// Склонение словосочетания
+        /// Склонение словосочетания (перевод в нижний регистр переводится автоматически)
         /// </summary>
-        /// <param name="phrase">Словосочетание или одно существительное\прилагательное</param>
-        /// <param name="caseEnum">Падеж</param>
+        /// <param name="originalData">Словосочетание и падеж</param>        
         /// <returns></returns>
-        [HttpGet]
-        public DeclinationResult DeclinePhrase(string phrase, CaseEnum caseEnum)
+        [HttpPost]
+        public DeclensionResult DeclensionOfPhrase([FromBody] OriginalData originalData)
         {
-            return _declension.DeclinePhrase(phrase, caseEnum);
+            return _declension.DeclensionOfPhrase(originalData);
         }
 
         /// <summary>
         /// Склонение ФИО
         /// </summary>
-        /// <param name="name">ФИО</param>
-        /// <param name="caseEnum">Падеж</param>
+        /// <param name="originalData">ФИО и падеж</param>        
         /// <returns></returns>
-        [HttpGet]
-        public DeclinationResult DeclineName(string name, CaseEnum caseEnum)
+        [HttpPost]
+        public DeclensionResult DeclensionOfName([FromBody] OriginalData originalData)
         {
-            return _declension.DeclineName(name , caseEnum);
+            return _declension.DeclensionOfName(originalData);
         }
 
     }
